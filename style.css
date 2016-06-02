@@ -6,3 +6,7 @@ body {
 p {
   text-align: left;
 }
+
+form {
+  margin: 2%;
+}
