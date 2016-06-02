@@ -1,0 +1,33 @@
+
+<h1>{{resp.title}}</h1>
+<br>
+<img ng-src="http://image.tmdb.org/t/p/w500/{{resp.poster_path}}" />
+<br>
+<!-- {{resp.poster_path}} -->
+
+<p>Release Date:
+  {{resp.release_date}}
+</p>
+<br>
+
+<p>
+  <a href="{{resp.homepage}}">Movie Homepage</a>
+</p>
+<br>
+
+<p>Overview:
+  {{resp.overview}}
+</p>
+<br>
+
+<p>Runtime:
+  {{resp.runtime}}
+</p>
+<br>
+<p>Genres:
+  <span ng-repeat="genre in resp.genres">
+    {{genre.name}},
+  </span>
+</p>
+
+<a href="index.html">Return Home</a>

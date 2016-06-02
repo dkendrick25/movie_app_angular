@@ -1,0 +1,5 @@
+<h1>Now Playing</h1>
+<a ng-repeat="result in data.results" href="#{{result.id}}">
+  <img  ng-src="http://image.tmdb.org/t/p/w500/{{result.poster_path}}" />
+<a/>
+<button ng-click="">More</button>
