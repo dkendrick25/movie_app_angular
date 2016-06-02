@@ -14,13 +14,26 @@ app.config(function($routeProvider){
 });
 
 app.controller('MainController', function($scope, $http) {
-  var api_key = 'fec8b5ab27b292a68294261bb21b04a5'
   $http.get('http://api.themoviedb.org/3/movie/now_playing?api_key=fec8b5ab27b292a68294261bb21b04a5')
   .success(function(data) {
     $scope.data = data;
     console.log(data);
-  });
 
+
+  });
+  //when the more button is clicked show more movies
+    var page = 2;
+  $scope.getMoreMovies = function() {
+      $http.get('http://api.themoviedb.org/3/movie/now_playing?api_key=fec8b5ab27b292a68294261bb21b04a5&page=' + page)
+      .success(function(data) {
+        $scope.data = data;
+        //console.log(data);
+        //console.log(data.total_pages)
+        if(page <= data.total_pages) {
+          page++;
+        };
+      });
+  };
 });
 
 app.controller('DetailsController', function($scope, $routeParams, $http) {
