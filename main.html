@@ -1,4 +1,10 @@
 <h1>Now Playing</h1>
+
+<form ng-submit="searchMovies()">
+  <input type="text" ng-model="searchMovie">
+  <button>Search</button>
+</form>
+
 <a ng-repeat="result in data.results" href="#{{result.id}}">
   <img  ng-src="http://image.tmdb.org/t/p/w500/{{result.poster_path}}" />
 <a/>
