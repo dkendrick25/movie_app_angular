@@ -6,6 +6,10 @@ app.config(function($routeProvider){
     controller: 'MainController',
     templateUrl: 'main.html'
   })
+  .when('/search', {
+    controller: 'SearchController',
+    templateUrl: 'search.html'
+  })
   .when('/:movieId', {
     controller: 'DetailsController',
     templateUrl: 'details.html'
@@ -34,13 +38,6 @@ app.controller('MainController', function($scope, $http) {
       };
     });
   };
-  //search for movies when search is clicked
-  $scope.searchMovies = function() {
-    $http.get("http://api.themoviedb.org/3/search/movie?api_key=fec8b5ab27b292a68294261bb21b04a5&query=" + $scope.searchMovie)
-    .success(function(data){
-      $scope.data = data;
-    });
-  };
 
 });
 
@@ -51,4 +48,16 @@ app.controller('DetailsController', function($scope, $routeParams, $http) {
     $scope.resp = resp;
     console.log(resp);
   });
+});
+
+app.controller('SearchController', function($scope, $http) {
+
+  //search for movies when search is clicked
+  $scope.searchMovies = function() {
+    $http.get("http://api.themoviedb.org/3/search/movie?api_key=fec8b5ab27b292a68294261bb21b04a5&query=" + $scope.searchMovie)
+    .success(function(data) {
+      $scope.data = data;
+      console.log(data);
+    });
+  };
 });
